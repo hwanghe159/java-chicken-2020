@@ -6,9 +6,14 @@ import domain.Table;
 import java.util.List;
 
 public class OutputView {
+    private static final String MAIN_DISPLAY = "## 메인화면\n1 - 주문등록\n2 - 결제하기\n3 - 프로그램 종료";
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+
+    public static void printMainDisplay() {
+        System.out.println(MAIN_DISPLAY);
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
