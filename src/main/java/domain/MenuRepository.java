@@ -3,6 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
@@ -16,6 +17,13 @@ public class MenuRepository {
         menus.add(new Menu(6, "순살치킨", Category.CHICKEN, 17_000));
         menus.add(new Menu(21, "콜라", Category.BEVERAGE, 1_000));
         menus.add(new Menu(22, "사이다", Category.BEVERAGE, 1_000));
+    }
+
+    public static Menu of(int number) {
+        return menus.stream()
+                .filter(menu -> menu.isSameNumber(number))
+                .findAny()
+                .orElseThrow(() -> new NoSuchElementException("해당하는 메뉴가 존재하지 않습니다."));
     }
 
     public static List<Menu> menus() {
