@@ -1,4 +1,4 @@
-package domain;
+package domain.task;
 
 import java.util.Arrays;
 
@@ -18,5 +18,17 @@ public enum TaskType {
                 .filter(task -> task.taskTypeNumber == taskTypeNumber)
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("해당 번호에 대응하는 기능이 존재하지 않습니다."));
+    }
+
+    public boolean isOrder() {
+        return this == ORDER;
+    }
+
+    public boolean isPay() {
+        return this == PAY;
+    }
+
+    public boolean isExit() {
+        return this == EXIT;
     }
 }

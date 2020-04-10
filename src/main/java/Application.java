@@ -1,20 +1,18 @@
-import domain.*;
-import view.InputView;
-import view.OutputView;
+import controller.ChickenPOS;
+import domain.Menu;
+import domain.MenuRepository;
+import domain.Table;
+import domain.TableRepository;
 
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        OutputView.printMainDisplay();
-        //chooseTask()
-
         final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-
-        final int tableNumber = InputView.inputTableNumber();
-
         final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+        ChickenPOS chickenPOS = new ChickenPOS(tables, menus);
+        while (true) {
+            chickenPOS.execute();
+        }
     }
 }
